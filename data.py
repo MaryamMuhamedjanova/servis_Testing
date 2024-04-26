@@ -3,6 +3,11 @@ headers = {
     'Authorization': 'Basic ZGJvOnBhc3MxMjM='
 }
 
+headers_cardPaymentд = {
+    "Content-Type": "application/json",
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzZjFhMTdhNC1hZjU2LTQzYzMtOTYxNy1mNzY2MmYxZGVhOGMiLCJ1bmlxdWVfbmFtZSI6ImRibyIsIm5iZiI6MTY5ODM3ODY0OCwiZXhwIjoxNjk4Mzc4NzA4LCJpYXQiOjE2OTgzNzg2NDgsImlzcyI6Imlzc3VlciIsImF1ZCI6ImF1ZGllbmNlIn0.LjVK4FowqkyGD6B-y9K5NVHhbhSg5RTICVabWVAI1JQ'
+}
+
 cardPayment_body = {
     "accNumber": "1250820006886382",
     "processing": "OW4",

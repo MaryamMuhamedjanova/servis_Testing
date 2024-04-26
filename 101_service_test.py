@@ -45,24 +45,24 @@ def positive_assert_customerId(customerId):
 
         # Проверяем содержимое каждого счета в списке счетов клиента
         for account in response_data["body"][0]["accounts"]:
-            assert "accountNum" in account
+            assert "CardNumber" in account
+            assert "cardProductCode" in account
+            assert "absAccount" in account
             assert "currency" in account
-            assert "isActive" in account
-            assert "statDscr" in account
             assert "balance" in account
             assert "blockedAmount" in account
             assert "availAmount" in account
-            assert "opened" in account
-            assert "statDscrId" in account
-            assert "statDscrNord" in account
-            assert "dateLast" in account
-            assert "department" in account
-            assert "closeDate" in account
-            assert "chaCode" in account
+            assert "status" in account
+            assert "statusActual" in account
+            assert "holderName" in account
+            assert "issueDate" in account
+            assert "expireDate" in account
+            assert "cardType" in account
+            assert "cardId" in account
             assert "processing" in account
             assert "cardFl" in account
-            assert "blockedStatus" in account
-            assert "defaultFL" in account
+            assert "overdraft" in account
+            assert "department" in account
             assert "depAccFl" in account
             assert "creAccFl" in account
             assert "ordId" in account

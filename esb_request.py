@@ -17,4 +17,7 @@ def service_post(body):
                          json=body,  # тут тело
                          headers=data.headers)  # а здесь заголовки
 
-#response = service_post(data.);
+def service_post_cardPayment(body):
+    return requests.post(configuration.url_cardPayment,
+                         json=body,  # тут тело
+                         headers=data.headers_cardPayment)  # а здесь заголовки

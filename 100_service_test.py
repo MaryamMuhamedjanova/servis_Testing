@@ -78,7 +78,8 @@ def positive_assert_clientCode(clientCode):
 def negative_assert_clientCode(clientCode):
     service_100_body = get_100_body(clientCode)
     response = esb_request.service_post(service_100_body)
-    assert response.json()["responseCode"] != '0'
+    with allure.step("Проверка сообщения об ошибке и кода ответа"):
+        assert response.json()["responseCode"] != '0'
 
 @allure.suite("Получение списка счетов клиента (100 сервис)")
 class TestSuite:
