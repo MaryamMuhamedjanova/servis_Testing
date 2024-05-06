@@ -14,66 +14,49 @@ def get_100_body(clientCode):
 def positive_assert_clientCode(clientCode):
     service_100_body = get_100_body(clientCode)
     payment_response = esb_request.service_post(service_100_body)
-    #assert payment_response.status_code == 200
-
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
         allure.attach("Request", str(service_100_body), allure.attachment_type.JSON)
-
-    #    # Добавляем ответ сервиса в отчет Allure
-#    allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
-
-        # Преобразуем ответ сервиса в объект Python
-        response_data = json.loads(payment_response.text)
-
-        # Проверяем наличие всех полей в ответе
-        assert "id" in response_data
-        assert "version" in response_data
-        assert "type" in response_data
-        assert "source" in response_data
-        assert "responseCode" in response_data
-        assert "responseMessage" in response_data
-        assert "dateTime" in response_data
-        assert "body" in response_data
-        assert isinstance(response_data["body"], list)
-        assert isinstance(response_data["body"][0], dict)
-        assert "accounts" in response_data["body"][0]
-
-        # Добавляем шаг с проверкой тела ответа
-#    with allure.step("Проверка ответа"):
-#        assert "accounts" in response_data["body"][0]
-
-        # Проверяем содержимое каждого счета в списке счетов клиента
-        for account in response_data["body"][0]["accounts"]:
-            assert "accountNum" in account
-            assert "currency" in account
-            assert "isActive" in account
-            assert "statDscr" in account
-            assert "balance" in account
-            assert "blockedAmount" in account
-            assert "availAmount" in account
-            assert "opened" in account
-            assert "statDscrId" in account
-            assert "statDscrNord" in account
-            assert "dateLast" in account
-            assert "department" in account
-            assert "closeDate" in account
-            assert "chaCode" in account
-            assert "processing" in account
-            assert "cardFl" in account
-            assert "blockedStatus" in account
-            assert "defaultFL" in account
-            assert "depAccFl" in account
-            assert "creAccFl" in account
-            assert "ordId" in account
-            assert "futureTurnoverKGS" in account
+    # Добавляем ответ сервиса в отчет Allure
     with allure.step("Проверка тела ответа"):
         allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
+    # Преобразуем ответ сервиса в объект Python
+    response_data = json.loads(payment_response.text)
+    # Ожидаемые поля в ответе
+    expected_fields = {
+        "id", "version", "type", "source", "responseCode", "responseMessage", "dateTime", "body"
+    }
+    # Поля для каждого счета клиента
+    account_fields = {
+        "accountNum", "currency", "isActive", "statDscr", "balance",
+        "blockedAmount", "availAmount", "opened", "statDscrId",
+        "statDscrNord", "dateLast", "department", "closeDate",
+        "chaCode", "processing", "cardFl", "blockedStatus",
+        "defaultFL", "depAccFl", "creAccFl", "ordId",
+        "futureTurnoverKGS"
+    }
+    # Проверка наличия ожидаемых полей в ответе
+    missing_fields = expected_fields - set(response_data.keys())
+    assert not missing_fields, f"Отсутствуют поля в ответе: {missing_fields}"
+    # Проверка наличия всех счетов клиента и их полей
+    assert isinstance(response_data["body"], list)
+    for account in response_data["body"][0].get("accounts", []):
+        missing_account_fields = account_fields - set(account.keys())
+        assert not missing_account_fields, f"Отсутствуют поля в карточке клиента: {missing_account_fields}"
+        extra_account_fields = set(account.keys()) - account_fields
+        assert not extra_account_fields, f"Обнаружены лишние поля в карточке клиента: {extra_account_fields}"
+    # Проверка наличия лишних полей в "body"
+    extra_body_fields = set(response_data["body"][0].keys()) - {"accounts"}
+    assert not extra_body_fields, f"Обнаружены лишние поля в 'body': {extra_body_fields}"
+    # Проверка наличия лишних полей в ответе
+    extra_fields = set(response_data.keys()) - expected_fields
+    assert not extra_fields, f"Обнаружены лишние поля в ответе: {extra_fields}"
+    # Проверка статуса ответа
     with allure.step("Проверка статуса ответа"):
         assert payment_response.status_code == 200
+    # Проверка сообщения об успехе в ответе
     with allure.step("Проверка сообщения об успехе в ответе"):
-        assert payment_response.json()["responseMessage"] == "Response succesfully recived"
-
+        assert response_data["responseMessage"] == "Response succesfully recived"
 
 def negative_assert_clientCode(clientCode):
     service_100_body = get_100_body(clientCode)
@@ -86,7 +69,7 @@ class TestSuite:
 
     @allure.sub_suite("Позитивные тест-кейсы")
     @pytest.mark.parametrize("clientCode", ["008.119115"], ids=["008.119115"])
-    @allure.title("поиск по корректному коду клиента: ")
+    @allure.title("Поиск по корректному коду клиента: ")
     @allure.description("Этот тест проверяет успешный запрос по коду клиента")
     def test_get_list_account_10_letter_in_clientCode_get_success_response(self,clientCode):
         positive_assert_clientCode(clientCode)
