@@ -1,3 +1,5 @@
+import uuid
+
 headers = {
     "Content-Type": "application/json",
     'Authorization': 'Basic ZGJvOnBhc3MxMjM='
@@ -117,7 +119,7 @@ service_207_proofNum_body = {
 service_001_body = {
     "version": "1.0",
     "type": "001",
-    "id": "abf6b2b9-0c04-4bf1-a7f7-08a4aabe95eb",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -141,6 +143,89 @@ service_001_body = {
                 "processing": "COLVIR"
             },
             "amount": 1,
+            "currency": "KGS",
+            "description": "Перевод через Yourbi: FX at rate 88.32",
+            "rateType": "RAT_JUR",
+            "dealingRate": 88.32,
+            "debitAmount": 10,
+            "creditAmount": 0.11,
+            "knp": {
+                "gkpo": "55501000",
+                "pb": "080402"
+            }
+        }
+    ]
+}
+
+service_013_body = {
+    "version": "1.0",
+    "type": "013",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820006718250",
+                "currency": "KGS",
+                "name": "Дубов Александр Вадимович",
+                "inn": "22708199600981",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "amount": 10,
+            "currency": "KGS",
+            "description": "Перевод через Yourbi: FX at rate 88.32",
+            "rateType": "RAT_JUR",
+            "dealingRate": 88.32,
+            "debitAmount": 10,
+            "creditAmount": 0.11,
+            "knp": {
+                "gkpo": "55501000",
+                "pb": "080402"
+            }
+        }
+    ]
+}
+
+service_014_body = {
+    "version": "1.0",
+    "type": "014",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820006718250",
+                "currency": "KGS",
+                "name": "Дубов Александр Вадимович",
+                "inn": "22708199600981",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "accountCredit": {
+
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "amount": 10,
             "currency": "KGS",
             "description": "Перевод через Yourbi: FX at rate 88.32",
             "rateType": "RAT_JUR",
