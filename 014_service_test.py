@@ -67,15 +67,15 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def get_013_body(accountDebit, accountCredit):
-    current_body = data.service_013_body.copy()
+def get_014_body(accountDebit, accountCredit):
+    current_body = data.service_014_body.copy()
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
 
 def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_013_body = get_013_body(accountDebit, accountCredit)
-    payment_response = esb_request.service_post(service_013_body)
+    service_014_body = get_014_body(accountDebit, accountCredit)
+    payment_response = esb_request.service_post(service_014_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
         # Декодируем русский текст для accountDebit
@@ -89,7 +89,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
             "body": [{
                 "accountDebit": decoded_accountDebit,
                 "accountCredit": decoded_accountCredit,
-                **service_013_body["body"][0]
+                **service_014_body["body"][0]
             }]
         }
         allure.attach("Request", json.dumps(decoded_body, ensure_ascii=False), allure.attachment_type.JSON)
@@ -99,7 +99,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
     with allure.step("Проверка тела ответа"):
         allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
         # Проверка ответа с использованием JSON Schema
-       # check_response_with_schema(payment_response.json())
+        check_response_with_schema(payment_response.json())
         # Проверка наличия полей в ответе для accountDebit
         check_accountDebit_fields(accountDebit)
         # Проверка наличия полей в ответе для accountCredit
@@ -176,14 +176,26 @@ class TestAmountSuite:
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title("Перевод со счета клиента одного подразделения на карту того же клиента в другом подразделении  (KGS->USD)")
+    @allure.title("Перевод со счета клиента одного подразделения на карту того же клиента в другом подразделении  (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-
+                    "department": "125002",
+                    "number": "1250220003574531",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджановна",
+                    "inn": "12006200000711",
+                    "cardFl": 0,
+                    "processing": "COLVIR"
                 },
                 {
-
+                    "department": "125008",
+                    "number": "1250820004775119",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджано",
+                    "inn": "12006200000711",
+                    "cardFl": 1,
+                    "processing": "OW4"
                 }
         )
     ])
@@ -196,10 +208,22 @@ class TestAmountSuite:
         @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
-
+                        "department": "125002",
+                        "number": "1250220100487534",
+                        "currency": "USD",
+                        "name": "Мухамеджанова Марьям Ахмаджановна",
+                        "inn": "12006200000711",
+                        "cardFl": 0,
+                        "processing": "COLVIR"
                     },
                     {
-
+                        "department": "125008",
+                        "number": "1250820004775119",
+                        "currency": "KGS",
+                        "name": "Мухамеджанова Марьям Ахмаджано",
+                        "inn": "12006200000711",
+                        "cardFl": 1,
+                        "processing": "OW4"
                     }
             )
         ])
@@ -211,10 +235,22 @@ class TestAmountSuite:
         @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
-
+                        "department": "125002",
+                        "number": "1250220000188322",
+                        "currency": "KGS",
+                        "name": "Рахимов Кучкарбай Ражапбайович",
+                        "inn": "21709196700070",
+                        "cardFl": 0,
+                        "processing": "COLVIR"
                     },
                     {
-
+                        "department": "125008",
+                        "number": "1250820004775119",
+                        "currency": "KGS",
+                        "name": "Мухамеджанова Марьям Ахмаджано",
+                        "inn": "12006200000711",
+                        "cardFl": 1,
+                        "processing": "OW4"
                     }
             )
         ])
@@ -226,10 +262,22 @@ class TestAmountSuite:
         @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
-
+                        "department": "125002",
+                        "number": "1250220100487534",
+                        "currency": "USD",
+                        "name": "Мухамеджанова Марьям Ахмаджановна",
+                        "inn": "12006200000711",
+                        "cardFl": 0,
+                        "processing": "COLVIR"
                     },
                     {
-
+                        "department": "125008",
+                        "number": "1250820008709881",
+                        "currency": "KGS",
+                        "name": "Дубов А.В. ИП тест Элкарт",
+                        "inn": "22708199600981",
+                        "cardFl": 1,
+                        "processing": "IPC"
                     }
             )
         ])

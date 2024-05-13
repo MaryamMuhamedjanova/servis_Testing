@@ -159,10 +159,10 @@ class TestAmountSuite:
                 },
                 {
                     "department": "125008",
-                    "number": "22708199600981",
+                    "number": "1250820101177557",
                     "currency": "USD",
                     "name": "Дубов Александр Вадимович ИП тест",
-                    "inn": "12006200000711",
+                    "inn": "22708199600981",
                     "cardFl": 0,
                     "processing": "COLVIR"
                 }

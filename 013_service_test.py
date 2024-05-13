@@ -99,7 +99,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
     with allure.step("Проверка тела ответа"):
         allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
         # Проверка ответа с использованием JSON Schema
-       # check_response_with_schema(payment_response.json())
+        check_response_with_schema(payment_response.json())
         # Проверка наличия полей в ответе для accountDebit
         check_accountDebit_fields(accountDebit)
         # Проверка наличия полей в ответе для accountCredit
@@ -177,10 +177,22 @@ class TestAmountSuite:
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-
+                    "department": "125008",
+                    "number": "1250820004775119",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджано",
+                    "inn": "12006200000711",
+                    "cardFl": 1,
+                    "processing": "OW4"
                 },
                 {
-
+                    "department": "125002",
+                    "number": "1250220003574531",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджановна",
+                    "inn": "12006200000711",
+                    "cardFl": 0,
+                    "processing": "COLVIR"
                 }
         )
     ])
@@ -188,15 +200,26 @@ class TestAmountSuite:
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title(
-        "Перевод с карты клиента одного подразделения на счет того же клиента в другом подразделении (KGS->USD)")
+    @allure.title("Перевод с карты клиента одного подразделения на счет того же клиента в другом подразделении (KGS->USD)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-
+                    "department": "125008",
+                    "number": "1250820004775119",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджано",
+                    "inn": "12006200000711",
+                    "cardFl": 1,
+                    "processing": "OW4"
                 },
                 {
-
+                    "department": "125002",
+                    "number": "1250220100487534",
+                    "currency": "USD",
+                    "name": "Мухамеджанова Марьям Ахмаджановна",
+                    "inn": "12006200000711",
+                    "cardFl": 0,
+                    "processing": "COLVIR"
                 }
         )
     ])
@@ -208,10 +231,22 @@ class TestAmountSuite:
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-
+                    "department": "125008",
+                    "number": "1250820004775119",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджано",
+                    "inn": "12006200000711",
+                    "cardFl": 1,
+                    "processing": "OW4"
                 },
                 {
-
+                    "department": "125002",
+                    "number": "1250220000188322",
+                    "currency": "KGS",
+                    "name": "Рахимов Кучкарбай Ражапбайович",
+                    "inn": "21709196700070",
+                    "cardFl": 0,
+                    "processing": "COLVIR"
                 }
         )
     ])
@@ -223,10 +258,22 @@ class TestAmountSuite:
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-
+                    "department": "125008",
+                    "number": "1250820008709881",
+                    "currency": "KGS",
+                    "name": "Дубов А.В. ИП тест Элкарт",
+                    "inn": "22708199600981",
+                    "cardFl": 1,
+                    "processing": "IPC"
                 },
                 {
-
+                    "department": "125002",
+                    "number": "1250220100487534",
+                    "currency": "USD",
+                    "name": "Мухамеджанова Марьям Ахмаджановна",
+                    "inn": "12006200000711",
+                    "cardFl": 0,
+                    "processing": "COLVIR"
                 }
         )
     ])

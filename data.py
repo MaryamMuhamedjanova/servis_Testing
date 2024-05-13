@@ -240,3 +240,82 @@ service_014_body = {
     ]
 }
 
+service_002_body = {
+    "version": "1.0",
+    "type": "002",
+    "id": str(uuid.uuid4()),
+    "dateTime": "29.07.2020 09:26:31.759000 +06:00",
+    "source": "DBO",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125001",
+                "number": "1250110000041083",
+                "currency": "KGS",
+                "name": "VISA Транзитный счет по списанию с ПК",
+                "inn": "20508199401533",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "accountCredit": {
+                "department": "125002",
+                "number": "1250220000188322",
+                "currency": "KGS",
+                "name": "Рахимов Кучкарбай Ражапбайович",
+                "inn": "21709196700070",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "amount": 64.44,
+            "currency": "KGS",
+            "description": "Пополнение счета 1250820001326464 в сумме 55.50 KGS",
+            "knp": {
+                "gkpo": "55501000",
+                "pb": "080401",
+                "vpb": "null"
+            }
+        }
+    ]
+}
+
+service_003_body = {
+    "version": "1.0",
+    "type": "003",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820101177557",
+                "currency": "USD",
+                "name": "Дубов Александр Вадимович ИП тест",
+                "inn": "22708199600981",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "accountCredit": {
+                "department": "125001",
+                "number": "1250110100008172",
+                "currency": "USD",
+                "name": "VISA Транзитный счет по списанию с ПК",
+                "inn": "20508199401533",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "amount": 99,
+            "currency": "USD",
+            "description": "Перевод через Yourbi: FX at rate 88.32",
+            "rateType": "RAT_JUR",
+            "dealingRate": 88.32,
+            "debitAmount": 10,
+            "creditAmount": 0.11,
+            "knp": {
+                "gkpo": "55501000",
+                "pb": "080402"
+            }
+        }
+    ]
+}
