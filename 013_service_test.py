@@ -223,7 +223,7 @@ class TestAmountSuite:
                 }
         )
     ])
-    def test_specific_accountDebit_and_accountCredit2(self, accountDebit, accountCredit):
+    def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
@@ -250,7 +250,7 @@ class TestAmountSuite:
                 }
         )
     ])
-    def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
+    def test_specific_accountDebit_and_accountCredit4(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
@@ -277,6 +277,6 @@ class TestAmountSuite:
                 }
         )
     ])
-    def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
+    def test_specific_accountDebit_and_accountCredit5(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 

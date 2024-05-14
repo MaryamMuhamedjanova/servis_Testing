@@ -122,6 +122,7 @@ service_001_body = {
     "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
+    "instance": "COLVIR118",
     "body": [
         {
             "accountDebit": {
@@ -163,6 +164,7 @@ service_013_body = {
     "id": str(uuid.uuid4()),
     "dateTime": "08.05.2024 13:54:57.664",
     "source": "Creatio",
+    "instance": "COLVIR118",
     "body": [
         {
             "accountDebit": {
@@ -183,13 +185,13 @@ service_013_body = {
                 "cardFl": 0,
                 "processing": "COLVIR"
             },
-            "amount": 10,
+            "amount": 1,
             "currency": "KGS",
             "description": "Перевод через Yourbi: FX at rate 88.32",
             "rateType": "RAT_JUR",
-            "dealingRate": 88.32,
-            "debitAmount": 10,
-            "creditAmount": 0.11,
+            "dealingRate": 1,
+            "debitAmount": 1,
+            "creditAmount": 1,
             "knp": {
                 "gkpo": "55501000",
                 "pb": "080402"
@@ -204,6 +206,7 @@ service_014_body = {
     "id": str(uuid.uuid4()),
     "dateTime": "08.05.2024 13:54:57.664",
     "source": "Creatio",
+    "instance": "COLVIR118",
     "body": [
         {
             "accountDebit": {
@@ -225,13 +228,13 @@ service_014_body = {
                 "cardFl": 1,
                 "processing": "OW4"
             },
-            "amount": 10,
+            "amount": 1,
             "currency": "KGS",
             "description": "Перевод через Yourbi: FX at rate 88.32",
             "rateType": "RAT_JUR",
-            "dealingRate": 88.32,
-            "debitAmount": 10,
-            "creditAmount": 0.11,
+            "dealingRate": 1,
+            "debitAmount": 1,
+            "creditAmount": 1,
             "knp": {
                 "gkpo": "55501000",
                 "pb": "080402"
@@ -246,6 +249,7 @@ service_002_body = {
     "id": str(uuid.uuid4()),
     "dateTime": "29.07.2020 09:26:31.759000 +06:00",
     "source": "DBO",
+    "instance": "COLVIR118",
     "body": [
         {
             "accountDebit": {
@@ -305,7 +309,7 @@ service_003_body = {
                 "cardFl": 0,
                 "processing": "COLVIR"
             },
-            "amount": 99,
+            "amount": 10,
             "currency": "USD",
             "description": "Перевод через Yourbi: FX at rate 88.32",
             "rateType": "RAT_JUR",
@@ -319,3 +323,35 @@ service_003_body = {
         }
     ]
 }
+
+service_007_body = {
+    "version": "1.0",
+    "type": "007",
+    "id": str(uuid.uuid4()),
+    "dateTime": "29.07.2020 09:26:31.759000 +06:00",
+    "source": "DBO",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820001326464",
+                "currency": "KGS"
+            },
+            "incomFl": 1,
+            "amount": 10,
+            "currency": "KGS",
+            "knp": {
+                "gkpo": "55501027",
+                "pb": "null",
+                "vpb": "null",
+                "cashSign": "34"
+            },
+            "description": "Приход из кассы"
+        }
+    ]
+}
+

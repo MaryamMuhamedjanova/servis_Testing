@@ -113,7 +113,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 
 
 # Класс с тестами
-@allure.suite("Перевод с карты на счет клиента (013 сервис)")
+@allure.suite("Перевод со счета на карту клиента (014 сервис)")
 class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
@@ -144,8 +144,6 @@ class TestAmountSuite:
     def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
-    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
-        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод со счета на карту клиента в одном подразделении (KGS->USD)")
@@ -200,12 +198,12 @@ class TestAmountSuite:
         )
     ])
 
-    def test_specific_accountDebit_and_accountCredit_USD(self, accountDebit, accountCredit):
+    def test_specific_accountDebit_and_accountCredit_USD2(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
-        @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-        @allure.title("Перевод со счета клиента одного подразделения на карту того же клиента в другом подразделении (KGS->USD)")
-        @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
+    @allure.title("Перевод со счета клиента одного подразделения на карту того же клиента в другом подразделении (KGS->USD)")
+    @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
                         "department": "125002",
@@ -227,12 +225,12 @@ class TestAmountSuite:
                     }
             )
         ])
-        def test_specific_accountDebit_and_accountCredit2(self, accountDebit, accountCredit):
-            positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit2(self, accountDebit, accountCredit):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
-        @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-        @allure.title("Перевод со счета клиента одного подразделения на карту клиента в другом подразделении (KGS->KGS)")
-        @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
+    @allure.title("Перевод со счета клиента одного подразделения на карту клиента в другом подразделении (KGS->KGS)")
+    @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
                         "department": "125002",
@@ -254,12 +252,12 @@ class TestAmountSuite:
                     }
             )
         ])
-        def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
-            positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
-        @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-        @allure.title("Перевод со счета клиента одного подразделения на карту клиента в другом подразделении (KGS->USD)")
-        @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
+    @allure.title("Перевод со счета клиента одного подразделения на карту клиента в другом подразделении (KGS->USD)")
+    @pytest.mark.parametrize("accountDebit, accountCredit", [
             (
                     {
                         "department": "125002",
@@ -281,8 +279,8 @@ class TestAmountSuite:
                     }
             )
         ])
-        def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
-            positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit4(self, accountDebit, accountCredit):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
 
 
