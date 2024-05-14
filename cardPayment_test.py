@@ -70,7 +70,7 @@ def negative_assert_processing(processing):
         assert response.json()["ResponseCode"] != '0'
 
 
-@allure.suite("Пополнение карт (cardPaymentService)")
+@allure.suite("(cardPaymentService) Пополнение карт")
 class TestAccNumberPayment:
 
     @allure.sub_suite("Тесты по номеру счета")
@@ -88,7 +88,7 @@ class TestAccNumberPayment:
         positive_assert_accNumber(accNumber)
 
 
-@allure.suite("Пополнение карт (cardPaymentService)")
+@allure.suite("(cardPaymentService) Пополнение карт")
 class TestProcessingPayment:
 
     @allure.sub_suite("Тесты по процессингу")

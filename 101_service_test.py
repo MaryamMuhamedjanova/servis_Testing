@@ -77,7 +77,7 @@ def negative_assert_customerId(customerId):
     response = esb_request.service_post(service_101_body)
     assert response.json()["responseCode"] != '0'
 
-@allure.suite("Получение списка карт клиента (101 сервис)")
+@allure.suite("(101 сервис) Получение списка карт клиента")
 class TestSuite:
     @allure.sub_suite("Позитивные тест-кейсы")
     @pytest.mark.parametrize("customerId", ["008.119115"], ids=["008.119115"])

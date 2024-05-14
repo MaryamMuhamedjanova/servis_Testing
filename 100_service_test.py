@@ -64,7 +64,7 @@ def negative_assert_clientCode(clientCode):
     with allure.step("Проверка сообщения об ошибке и кода ответа"):
         assert response.json()["responseCode"] != '0'
 
-@allure.suite("Получение списка счетов клиента (100 сервис)")
+@allure.suite("(100 сервис) Получение списка счетов клиента")
 class TestSuite:
 
     @allure.sub_suite("Позитивные тест-кейсы")

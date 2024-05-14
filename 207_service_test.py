@@ -146,7 +146,7 @@ def negative_assert_inn(inn):
 
 
 # Первый класс с тестами по доверенному номеру
-@allure.suite("Получение информации по клиенту (207 сервис)")
+@allure.suite("(207 сервис) Получение информации по клиенту")
 class TestProofNumSuite:
     @allure.sub_suite("Проверки по доверенному номеру")
     @pytest.mark.parametrize("proofNum", ["996553565311"], ids=["996553565311"])
@@ -177,7 +177,7 @@ class TestProofNumSuite:
         negative_assert_proofNum(proofNum)
 
 # Второй класс с тестами по коду клиента
-@allure.suite("Получение информации по клиенту (207 сервис)")
+@allure.suite("(207 сервис) Получение информации по клиенту")
 class TestCustomerIdSuite:
     @allure.sub_suite("Проверки по коду клиента")
     @pytest.mark.parametrize("customerId", [""], ids=[""])
@@ -216,7 +216,7 @@ class TestCustomerIdSuite:
 
 
 # Третий класс с тестами по ИНН
-@allure.suite("Получение информации по клиенту (207 сервис)")
+@allure.suite("(207 сервис) Получение информации по клиенту")
 class TestInnSuite:
     @allure.sub_suite("Проверки по ИНН")
     @pytest.mark.parametrize("inn", [""], ids=[""])

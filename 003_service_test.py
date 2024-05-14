@@ -113,7 +113,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 
 
 # Класс с тестами
-@allure.suite("Перевод со счета клиента на счет банка (003 сервис)")
+@allure.suite("(003 сервис) Перевод со счета клиента на счет банка")
 class TestAmountSuite:
     # Параметризованный тест
 

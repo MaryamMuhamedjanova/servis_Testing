@@ -90,7 +90,7 @@ def negative_assert_identifier(identifier):
         assert response.json()["responseCode"] != '0'
     # allure.attach("Request", str(service_102_body))  # Attach request to Allure report
 
-@allure.suite("Получение информации по номеру счета/карты (102 сервис)")
+@allure.suite("(102 сервис) Получение информации по номеру счета/карты")
 class TestSuite:
 
     @allure.sub_suite("Позитивные тест-кейсы")
