@@ -67,15 +67,15 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def get_016_body(accountDebit, accountCredit):
-    current_body = data.service_016_body.copy()
+def get_017_body(accountDebit, accountCredit):
+    current_body = data.service_017_body.copy()
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
 
 def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_016_body = get_016_body(accountDebit, accountCredit)
-    payment_response = esb_request.service_post(service_016_body)
+    service_017_body = get_017_body(accountDebit, accountCredit)
+    payment_response = esb_request.service_post(service_017_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
         # Декодируем русский текст для accountDebit
@@ -89,7 +89,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
             "body": [{
                 "accountDebit": decoded_accountDebit,
                 "accountCredit": decoded_accountCredit,
-                **service_016_body["body"][0]
+                **service_017_body["body"][0]
             }]
         }
         allure.attach("Request", json.dumps(decoded_body, ensure_ascii=False), allure.attachment_type.JSON)
@@ -117,18 +117,9 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title("Перевод с карты на головной счет банка (KGS->KGS)")
+    @allure.title("Перевод со счета головного банка на карту клиента (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
-                {
-                    "department": "125008",
-                    "number": "1250820004775119",
-                    "currency": "KGS",
-                    "name": "Мухамеджанова Марьям Ахмаджано",
-                    "inn": "12006200000711",
-                    "cardFl": 1,
-                    "processing": "OW4"
-                },
                 {
                     "department": "125001",
                     "number": "1250110000041083",
@@ -137,6 +128,15 @@ class TestAmountSuite:
                     "inn": "20508199401533",
                     "cardFl": 0,
                     "processing": "COLVIR"
+                },
+                {
+                    "department": "125008",
+                    "number": "1250820004775119",
+                    "currency": "KGS",
+                    "name": "Мухамеджанова Марьям Ахмаджано",
+                    "inn": "12006200000711",
+                    "cardFl": 1,
+                    "processing": "OW4"
                 }
         )
     ])

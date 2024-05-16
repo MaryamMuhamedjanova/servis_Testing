@@ -423,3 +423,81 @@ service_015_body = {
         }
     ]
 }
+
+service_016_body = {
+    "version": "1.0",
+    "type": "016",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125001",
+                "number": "1250110000041083",
+                "currency": "KGS",
+                "name": "VISA Транзитный счет по списанию с ПК",
+                "inn": "20508199401533",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "amount": 4.00,
+            "currency": "KGS",
+            "description": "Перевод c карты на карту 4196-73**-****-0727 в сумме 80.00 KGS",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "080501",
+                "vpb": "null"
+            }
+        }
+    ]
+}
+
+service_017_body = {
+    "version": "1.0",
+    "type": "017",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125001",
+                "number": "1250110000041083",
+                "currency": "KGS",
+                "name": "VISA Транзитный счет по списанию с ПК",
+                "inn": "20508199401533",
+                "cardFl": 0,
+                "processing": "COLVIR"
+            },
+            "amount": 4.00,
+            "currency": "KGS",
+            "description": "Перевод c карты на карту 4196-73**-****-0727 в сумме 80.00 KGS",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "080501",
+                "vpb": "null"
+            }
+        }
+    ]
+}
