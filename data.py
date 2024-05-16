@@ -501,3 +501,51 @@ service_017_body = {
         }
     ]
 }
+
+service_019_body = {
+    "version": "1.0",
+    "type": "019",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS"
+            },
+            "accountCredit": {
+                "department": "125008"
+            },
+            "bnkOper": "02083",
+            "amount": 10.50,
+            "currency": "KGS"
+        }
+    ]
+}
+
+service_020_body = {
+    "version": "1.0",
+    "type": "020",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125001",
+                "number": "1250110000041083",
+                "currency": "KGS"
+            },
+            "accountCredit": {
+                "department": "125001"
+            },
+            "bnkOper": "02083",
+            "amount": 10.50,
+            "currency": "KGS"
+        }
+    ]
+}
