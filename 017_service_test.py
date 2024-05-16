@@ -121,11 +121,11 @@ class TestAmountSuite:
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-                    "department": "125001",
-                    "number": "1250110000041083",
+                    "department": "125008",
+                    "number": "1250810001333655",
                     "currency": "KGS",
-                    "name": "VISA Транзитный счет по списанию с ПК",
-                    "inn": "20508199401533",
+                    "name": "ДЕНЕЖНЫЕ СРЕДСТВА В ПУТИ (ОСОО ГРИН ТЕЛЕКОМ)",
+                    "inn": "22808198701225",
                     "cardFl": 0,
                     "processing": "COLVIR"
                 },

@@ -117,7 +117,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title("Перевод с карты на головной счет банка (KGS->KGS)")
+    @allure.title("Перевод с карты на счет банка в одном подразделении(KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
@@ -130,11 +130,11 @@ class TestAmountSuite:
                     "processing": "OW4"
                 },
                 {
-                    "department": "125001",
-                    "number": "1250110000041083",
+                    "department": "125008",
+                    "number": "1250810001333655",
                     "currency": "KGS",
-                    "name": "VISA Транзитный счет по списанию с ПК",
-                    "inn": "20508199401533",
+                    "name": "ДЕНЕЖНЫЕ СРЕДСТВА В ПУТИ (ОСОО ГРИН ТЕЛЕКОМ)",
+                    "inn": "22808198701225",
                     "cardFl": 0,
                     "processing": "COLVIR"
                 }
