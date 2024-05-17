@@ -67,15 +67,15 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def get_017_body(accountDebit, accountCredit):
-    current_body = data.service_017_body.copy()
+def service_023_body1(accountDebit, accountCredit):
+    current_body = data.service_023_body.copy()
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
 
 def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_017_body = get_017_body(accountDebit, accountCredit)
-    payment_response = esb_request.service_post(service_017_body)
+    service_023_body = service_023_body1(accountDebit, accountCredit)
+    payment_response = esb_request.service_post(service_023_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
         # Декодируем русский текст для accountDebit
@@ -89,7 +89,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
             "body": [{
                 "accountDebit": decoded_accountDebit,
                 "accountCredit": decoded_accountCredit,
-                **service_017_body["body"][0]
+                **service_023_body["body"][0]
             }]
         }
         allure.attach("Request", json.dumps(decoded_body, ensure_ascii=False), allure.attachment_type.JSON)
@@ -113,19 +113,19 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 
 
 # Класс с тестами
-@allure.suite("(017 сервис) Перевод со счета банка на карту")
+@allure.suite("(023 сервис) Перевод с депозита на карту")
 class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title("Перевод со счета головного банка на карту клиента (KGS->KGS)")
+    @allure.title("Перевод с депозита одного клиента на карту другого клиента в разных подразделениях (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-                    "department": "125008",
-                    "number": "1250810001333655",
+                    "department": "125009",
+                    "number": "1250920001768961",
                     "currency": "KGS",
-                    "name": "ДЕНЕЖНЫЕ СРЕДСТВА В ПУТИ (ОСОО ГРИН ТЕЛЕКОМ)",
-                    "inn": "22808198701225",
+                    "name": "Акматжан Кызы Каныкей",
+                    "inn": "11506199501796",
                     "cardFl": 0,
                     "processing": "COLVIR"
                 },
@@ -144,109 +144,5 @@ class TestAmountSuite:
     def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
 
-    # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    # @allure.title("Перевод с карты на карту в одном подразделении (KGS->USD)")
-    # @pytest.mark.parametrize("accountDebit, accountCredit", [
-    #     (
-    #             {
-    #                 "department": "125008",
-    #                 "number": "1250820004775119",
-    #                 "currency": "KGS",
-    #                 "name": "Мухамеджанова Марьям Ахмаджано",
-    #                 "inn": "12006200000711",
-    #                 "cardFl": 1,
-    #                 "processing": "OW4"
-    #             },
-    #             {
-    #
-    #             }
-    #     )
-    # ])
-    #
-    # def test_specific_accountDebit_and_accountCredit_USD(self, accountDebit, accountCredit):
-    #     positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
-    #
-    # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    # @allure.title("Перевод с карты клиента одного подразделения на счет того же клиента в другом подразделении (KGS->KGS)")
-    # @pytest.mark.parametrize("accountDebit, accountCredit", [
-    #     (
-    #             {
-    #                 "department": "125008",
-    #                 "number": "1250820004775119",
-    #                 "currency": "KGS",
-    #                 "name": "Мухамеджанова Марьям Ахмаджано",
-    #                 "inn": "12006200000711",
-    #                 "cardFl": 1,
-    #                 "processing": "OW4"
-    #             },
-    #             {
-    #
-    #             }
-    #     )
-    # ])
-    # def test_specific_accountDebit_and_accountCredit2(self, accountDebit, accountCredit):
-    #     positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
-    #
-    # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    # @allure.title("Перевод с карты клиента одного подразделения на счет того же клиента в другом подразделении (KGS->USD)")
-    # @pytest.mark.parametrize("accountDebit, accountCredit", [
-    #     (
-    #             {
-    #                 "department": "125008",
-    #                 "number": "1250820004775119",
-    #                 "currency": "KGS",
-    #                 "name": "Мухамеджанова Марьям Ахмаджано",
-    #                 "inn": "12006200000711",
-    #                 "cardFl": 1,
-    #                 "processing": "OW4"
-    #             },
-    #             {
-    #
-    #             }
-    #     )
-    # ])
-    # def test_specific_accountDebit_and_accountCredit3(self, accountDebit, accountCredit):
-    #     positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
-    #
-    # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    # @allure.title("Перевод с карты клиента одного подразделения на счет клиента в другом подразделении (KGS->KGS)")
-    # @pytest.mark.parametrize("accountDebit, accountCredit", [
-    #     (
-    #             {
-    #                 "department": "125008",
-    #                 "number": "1250820004775119",
-    #                 "currency": "KGS",
-    #                 "name": "Мухамеджанова Марьям Ахмаджано",
-    #                 "inn": "12006200000711",
-    #                 "cardFl": 1,
-    #                 "processing": "OW4"
-    #             },
-    #             {
-    #
-    #             }
-    #     )
-    # ])
-    # def test_specific_accountDebit_and_accountCredit4(self, accountDebit, accountCredit):
-    #     positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
-    #
-    # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    # @allure.title("Перевод с карты клиента одного подразделения на счет клиента в другом подразделении (KGS->USD)")
-    # @pytest.mark.parametrize("accountDebit, accountCredit", [
-    #     (
-    #             {
-    #                 "department": "125008",
-    #                 "number": "1250820008709881",
-    #                 "currency": "KGS",
-    #                 "name": "Дубов А.В. ИП тест Элкарт",
-    #                 "inn": "22708199600981",
-    #                 "cardFl": 1,
-    #                 "processing": "IPC"
-    #             },
-    #             {
-    #
-    #             }
-    #     )
-    # ])
-    # def test_specific_accountDebit_and_accountCredit5(self, accountDebit, accountCredit):
-    #     positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
-    #
+
+

@@ -67,15 +67,15 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def service_021_body1(accountDebit, accountCredit):
-    current_body = data.service_021_body.copy()
+def service_022_body1(accountDebit, accountCredit):
+    current_body = data.service_022_body.copy()
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
 
 def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_021_body = service_021_body1(accountDebit, accountCredit)
-    payment_response = esb_request.service_post(service_021_body)
+    service_022_body = service_022_body1(accountDebit, accountCredit)
+    payment_response = esb_request.service_post(service_022_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
         # Декодируем русский текст для accountDebit
@@ -89,7 +89,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
             "body": [{
                 "accountDebit": decoded_accountDebit,
                 "accountCredit": decoded_accountCredit,
-                **service_021_body["body"][0]
+                **service_022_body["body"][0]
             }]
         }
         allure.attach("Request", json.dumps(decoded_body, ensure_ascii=False), allure.attachment_type.JSON)
@@ -113,25 +113,25 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
 
 
 # Класс с тестами
-@allure.suite("(021 сервис) Перевод со счета клиента на депозит")
+@allure.suite("(022 сервис) Перевод с депозита на счет клиента")
 class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
-    @allure.title("Перевод со счета клиента на его же депозит в одном подразделении (KGS->KGS)")
+    @allure.title("Перевод с депозита одного клиента на счет другого клиента в разных подразделениях (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit", [
         (
                 {
-                    "department": "125008",
-                    "number": "1250820004787445",
+                    "department": "125009",
+                    "number": "1250920001768961",
                     "currency": "KGS",
-                    "name": "Мухамеджанова Марьям Ахмаджановна",
-                    "inn": "12006200000711",
+                    "name": "Акматжан Кызы Каныкей",
+                    "inn": "11506199501796",
                     "cardFl": 0,
                     "processing": "COLVIR"
                 },
                 {
                     "department": "125008",
-                    "number": "1250820005971451",
+                    "number": "1250820004787445",
                     "currency": "KGS",
                     "name": "Мухамеджанова Марьям Ахмаджановна",
                     "inn": "12006200000711",

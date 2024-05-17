@@ -588,3 +588,120 @@ service_021_body = {
         }
     ]
 }
+
+service_022_body = {
+    "version": "1.0",
+    "type": "022",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820008709881",
+                "currency": "KGS",
+                "name": "Дубов А.В. ИП тест Элкарт",
+                "inn": "22708199600981",
+                "cardFl": 1,
+                "processing": "IPC"
+            },
+            "amount": 100.00,
+            "currency": "KGS",
+            "description": "перевод с депозита на acc",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "080501",
+                "vpb": "null"
+            }
+        }
+    ]
+}
+
+service_023_body = {
+    "version": "1.0",
+    "type": "023",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820008709881",
+                "currency": "KGS",
+                "name": "Дубов А.В. ИП тест Элкарт",
+                "inn": "22708199600981",
+                "cardFl": 1,
+                "processing": "IPC"
+            },
+            "amount": 100.00,
+            "currency": "KGS",
+            "description": "перевод с депозита на карту ",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "080501",
+                "vpb": "null"
+            }
+        }
+    ]
+}
+
+service_024_body = {
+    "version": "1.0",
+    "type": "024",
+    "id": str(uuid.uuid4()),
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820004775119",
+                "currency": "KGS",
+                "name": "Мухамеджанова Марьям Ахмаджано",
+                "inn": "12006200000711",
+                "cardFl": 1,
+                "processing": "OW4"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820008709881",
+                "currency": "KGS",
+                "name": "Дубов А.В. ИП тест Элкарт",
+                "inn": "22708199600981",
+                "cardFl": 1,
+                "processing": "IPC"
+            },
+            "amount": 100.00,
+            "currency": "KGS",
+            "description": "перевод с депозита на карту ",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "080501",
+                "vpb": "null"
+            }
+        }
+    ]
+}
