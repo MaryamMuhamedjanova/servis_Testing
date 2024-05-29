@@ -1,0 +1,46 @@
+{
+    "##": "Version 2.8.3 was moved to https://github.com/ScoopInstaller/Versions/blob/master/bucket/lynx283.json",
+    "version": "2.9.1",
+    "description": "Text web browser.",
+    "homepage": "https://invisible-island.net/lynx/lynx.html",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "vcredist": "extras/vcredist2013"
+    },
+    "depends": "cacert",
+    "url": [
+        "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.1-setup.exe",
+        "https://slproweb.com/download/Win32OpenSSL_Light-3_3_0.exe"
+    ],
+    "hash": [
+        "f15fddc787a7de375d6257a724c96f721429af1b42c1f8ac7ec8da06d6418cb5",
+        "031590db73ad684218e2967ebb8542ec700b180a9c8fc72038aa1aaf8dc2bf8a"
+    ],
+    "innosetup": true,
+    "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
+    "bin": [
+        [
+            "lynx.exe",
+            "lynx",
+            "-cfg=\"$dir\\lynx.cfg\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "lynx.exe",
+            "lynx",
+            "-cfg=\"$dir\\lynx.cfg\""
+        ]
+    ],
+    "persist": [
+        "lynx.cfg",
+        "lynx.lss"
+    ],
+    "checkver": {
+        "url": "https://lynx.invisible-island.net/current/CHANGES",
+        "regex": "[\\d-]{10}\\s+\\(([\\w.]+)\\)"
+    },
+    "autoupdate": {
+        "url": "https://invisible-island.net/archives/lynx/current/lynx-newssl$version-setup.exe"
+    }
+}

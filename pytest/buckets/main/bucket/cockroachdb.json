@@ -1,0 +1,29 @@
+{
+    "version": "23.2.5",
+    "description": "The SQL database for global cloud services",
+    "homepage": "https://www.cockroachlabs.com/",
+    "license": {
+        "identifier": "Freeware,BSL-1.1,MIT,...",
+        "url": "https://github.com/cockroachdb/cockroach/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://binaries.cockroachdb.com/cockroach-v23.2.5.windows-6.2-amd64.zip",
+            "hash": "02558f232f8f42d71a0304cf624bcdd5442d7067f18a945541e8494bed1216e7",
+            "extract_dir": "cockroach-v23.2.5.windows-6.2-amd64"
+        }
+    },
+    "bin": "cockroach.exe",
+    "checkver": {
+        "url": "https://www.cockroachlabs.com/docs/stable/install-cockroachdb.html",
+        "regex": "\"version-name\">v([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://binaries.cockroachdb.com/cockroach-v$version.windows-6.2-amd64.zip",
+                "extract_dir": "cockroach-v$version.windows-6.2-amd64"
+            }
+        }
+    }
+}

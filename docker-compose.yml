@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  allure:
+    image: frankescobar/allure-docker-service:latest
+    container_name: allure
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./allure-results:/app/allure-results
+      - allure-reports:/app/allure-reports
+
+  allure-ui:
+    image: frankescobar/allure-docker-service-ui:latest
+    container_name: allure-ui
+    ports:
+      - "5252:5252"
+    environment:
+      - ALLURE_DOCKER_PUBLIC_API_URL=http://localhost:5050
+    depends_on:
+      - allure
+
+volumes:
+  allure-reports:

@@ -1,3 +1,5 @@
+import uuid
+
 import allure
 import pytest
 import json
@@ -11,9 +13,9 @@ response_schema = {
     "type": "object",
     "properties": {
         "version": {"type": "string", "const": "1.0"},
-        "type": {"type": "string", "const": "007"},
+        "type": {"type": "string", "const": "008"},
         "id": {"type": "string", "format": "uuid"},
-        "dateTime": {"type": "string", "format": "date-time"},
+        "dateTime": {"type": "string", "pattern": r"\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2}\.\d{3}"},
         "source": {"type": "string"},
         "restartAllowed": {"type": "integer"},
         "responseCode": {"type": "string"},
@@ -37,7 +39,7 @@ response_schema = {
                     "sumProp": {"type": "string"},
                     "depId": {"type": "string"},
                     "docId": {"type": "string"},
-                    "docDate": {"type": "string", "format": "date-time"}
+                    "docDate": {"type": "string", "pattern": r"\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}:\d{2}"}
                 },
                 "required": ["responseCode", "responseMessage", "accountCredit", "docNum",
                              "sumProp", "depId", "docId", "docDate"]
@@ -48,8 +50,6 @@ response_schema = {
                  "responseCode", "responseMessage", "body"]
 }
 
-
-
 # Функция для проверки ответа с использованием JSON Schema
 def check_response_with_schema(response_json):
     jsonschema.validate(instance=response_json, schema=response_schema)
@@ -57,12 +57,6 @@ def check_response_with_schema(response_json):
 # Остальной код остается таким же, но использует новую функцию check_response_with_schema
 # Функция для формирования тела запроса
 # Функция для проверки полей в объекте accountDebit
-def check_accountDebit_fields(accountDebit):
-    expected_fields = [
-        "department", "number", "currency", "name", "inn", "cardFl", "processing"
-    ]
-    for field in expected_fields:
-        assert field in accountDebit, f"Поле '{field}' отсутствует в accountDebit"
 
 def decode_russian_text(text):
     return text.encode('utf-8').decode('unicode_escape')
@@ -73,6 +67,7 @@ def decode_russian_text(text):
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
 def service_008_body1(accountDebit, accountCredit):
     current_body = data.service_008_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
@@ -104,10 +99,6 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
         allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
         # Проверка ответа с использованием JSON Schema
         check_response_with_schema(payment_response.json())
-        # Проверка наличия полей в ответе для accountDebit
-       # check_accountDebit_fields(accountDebit)
-        # Проверка наличия полей в ответе для accountCredit
-        #check_accountCredit_fields(accountCredit)
     # Проверка статуса ответа
     with allure.step("Проверка статуса ответа"):
         assert payment_response.status_code == 200

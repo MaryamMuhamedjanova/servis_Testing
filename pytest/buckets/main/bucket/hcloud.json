@@ -1,0 +1,31 @@
+{
+    "version": "1.43.1",
+    "description": "Command-line interface for Hetzner Cloud",
+    "homepage": "https://github.com/hetznercloud/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hetznercloud/cli/releases/download/v1.43.1/hcloud-windows-amd64.zip",
+            "hash": "92acc396f75679181f0e0604f351806a7d9ea65a18614b0592541609581fa317"
+        },
+        "32bit": {
+            "url": "https://github.com/hetznercloud/cli/releases/download/v1.43.1/hcloud-windows-386.zip",
+            "hash": "5bd0fa322fa5df7b514519d9371a99f13f1534f729238a56190bcffe5857b5ca"
+        }
+    },
+    "bin": "hcloud.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hetznercloud/cli/releases/download/v$version/hcloud-windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/hetznercloud/cli/releases/download/v$version/hcloud-windows-386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

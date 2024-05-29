@@ -1,0 +1,49 @@
+{
+    "version": "0.17.9",
+    "description": "Idempotent schema management for MySQL, Microsoft SQL Server, and SQLite.",
+    "homepage": "https://github.com/k0kubun/sqldef",
+    "license": "MIT,Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/k0kubun/sqldef/releases/download/v0.17.9/mssqldef_windows_amd64.zip",
+                "https://github.com/k0kubun/sqldef/releases/download/v0.17.9/mysqldef_windows_amd64.zip",
+                "https://github.com/k0kubun/sqldef/releases/download/v0.17.9/sqlite3def_windows_amd64.zip"
+            ],
+            "hash": [
+                "fc77c813e0b01dfb4113658536bd14238ef8b278f717c12972e4774188102153",
+                "04d6a504ca9ca83b9d2d66a9d988a9d847dab6dac2dff1dafa60030689895743",
+                "e01604b4242d8112bcede842db324f8871f1aafdfc1c4e00aba364935cd09868"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/k0kubun/sqldef/releases/download/v0.13.23/mssqldef_windows_386.zip",
+                "https://github.com/k0kubun/sqldef/releases/download/v0.13.23/mysqldef_windows_386.zip",
+                "https://github.com/k0kubun/sqldef/releases/download/v0.13.23/sqlite3def_windows_386.zip"
+            ],
+            "hash": [
+                "",
+                "f06f29dc3e7683f55bdb1adc90224ce9b5bf46b0ae2e9ed23cada8e5f21958b7",
+                "6e24bc4a66075bda5a75158b5318a5e333af876f5f1d3882841d1ac45b1f3c98"
+            ]
+        }
+    },
+    "bin": [
+        "mssqldef.exe",
+        "mysqldef.exe",
+        "sqlite3def.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/k0kubun/sqldef/releases/download/v$version/mssqldef_windows_amd64.zip",
+                    "https://github.com/k0kubun/sqldef/releases/download/v$version/mysqldef_windows_amd64.zip",
+                    "https://github.com/k0kubun/sqldef/releases/download/v$version/sqlite3def_windows_amd64.zip"
+                ]
+            }
+        }
+    }
+}

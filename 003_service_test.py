@@ -1,3 +1,5 @@
+import uuid
+
 import allure
 import pytest
 import json
@@ -67,14 +69,16 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def service_003_body1(accountDebit, accountCredit):
+def service_003_body1(accountDebit, accountCredit, currency):
     current_body = data.service_003_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
+    current_body["body"][0]["currency"] = currency
     return current_body
 
-def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_003_body = service_003_body1(accountDebit, accountCredit)
+def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit, currency):
+    service_003_body = service_003_body1(accountDebit, accountCredit, currency)
     payment_response = esb_request.service_post(service_003_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
@@ -119,7 +123,7 @@ class TestAmountSuite:
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод со счета клиента на счет головного банка (USD->USD)")
-    @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (
                 {
                     "department": "125008",
@@ -139,15 +143,16 @@ class TestAmountSuite:
                     "inn": "20508199401533",
                     "cardFl": 0,
                     "processing": "COLVIR"
-                }
+                },
+                "USD"
         )
     ])
-    def test_specific_accountDebit_and_accountCredit_USD(self, accountDebit, accountCredit):
-        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit_USD(self, accountDebit, accountCredit, currency):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency)
 
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод со счета клиента на счет головного банка (KGS->KGS)")
-    @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (
                 {
                     "department": "125002",
@@ -166,12 +171,13 @@ class TestAmountSuite:
                     "inn": "20508199401533",
                     "cardFl": 0,
                     "processing": "COLVIR"
-                }
+                },
+                "KGS"
         )
     ])
 
-    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
-        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit, currency):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency)
 
 
 

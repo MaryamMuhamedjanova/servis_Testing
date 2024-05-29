@@ -1,12 +1,10 @@
+import uuid
 import allure
 import pytest
 import json
 import jsonschema
 import data
 import esb_request
-
-# JSON Schema для описания ожидаемой структуры ответа от сервиса
-# Updated response schema
 response_schema = {
     "type": "object",
     "properties": {
@@ -45,14 +43,9 @@ response_schema = {
                  "responseCode", "responseMessage", "body"]
 }
 
-
-# Функция для проверки ответа с использованием JSON Schema
 def check_response_with_schema(response_json):
     jsonschema.validate(instance=response_json, schema=response_schema)
 
-# Остальной код остается таким же, но использует новую функцию check_response_with_schema
-# Функция для формирования тела запроса
-# Функция для проверки полей в объекте accountDebit
 def check_accountDebit_fields(accountDebit):
     expected_fields = [
         "department", "number", "currency", "name", "inn", "cardFl", "processing"
@@ -63,28 +56,22 @@ def check_accountDebit_fields(accountDebit):
 def decode_russian_text(text):
     return text.encode('utf-8').decode('unicode_escape')
 
-
-# Позитивный тест
-
-# Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def get_015_body(accountDebit, accountCredit):
+def get_015_body(accountDebit, accountCredit, currency):
     current_body = data.service_015_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
+    current_body["body"][0]["currency"] = currency
     return current_body
 
-def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_015_body = get_015_body(accountDebit, accountCredit)
+def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency):
+    service_015_body = get_015_body(accountDebit, accountCredit,currency)
     payment_response = esb_request.service_post(service_015_body)
-    # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
-        # Декодируем русский текст для accountDebit
         decoded_accountDebit = {key: decode_russian_text(value) if isinstance(value, str) else value for key, value in
                                 accountDebit.items()}
-        # Декодируем русский текст для accountCredit
         decoded_accountCredit = {key: decode_russian_text(value) if isinstance(value, str) else value for key, value in
                                  accountCredit.items()}
-        # Преобразуем словари в JSON с декодированными данными
         decoded_body = {
             "body": [{
                 "accountDebit": decoded_accountDebit,
@@ -118,7 +105,7 @@ class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод с карты на карту в одном подразделении (KGS->KGS)")
-    @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (
                 {
                     "department": "125008",
@@ -137,12 +124,13 @@ class TestAmountSuite:
                     "inn": "12006200000711",
                     "cardFl": 1,
                     "processing": "OW4"
-                }
+                },
+            "KGS"
         )
     ])
 
-    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
-        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit,currency):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency)
 
     # @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     # @allure.title("Перевод с карты на карту в одном подразделении (KGS->USD)")

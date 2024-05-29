@@ -1,0 +1,31 @@
+{
+    "version": "1.7.3",
+    "description": "Formatter, linter, bundler, and more for JavaScript, TypeScript, JSON, HTML, Markdown, and CSS.",
+    "homepage": "https://biomejs.dev/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv1.7.3/biome-win32-x64.exe#/biome.exe",
+            "hash": "a44a6787eb664cd8977da4cfcbc58092c3b8b7e44419895944858dd1eae13855"
+        },
+        "arm64": {
+            "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv1.7.3/biome-win32-arm64.exe#/biome.exe",
+            "hash": "6f545f42e3b47f5489f75f30f309611e3ae470dd92e568e44311d2ee3ffdb3f9"
+        }
+    },
+    "bin": "biome.exe",
+    "checkver": {
+        "url": "https://github.com/biomejs/biome/tags",
+        "regex": "/releases/tag/cli%2F(?:v|V)?([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-x64.exe#/biome.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-arm64.exe#/biome.exe"
+            }
+        }
+    }
+}

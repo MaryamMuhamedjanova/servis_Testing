@@ -1,3 +1,5 @@
+import uuid
+
 import allure
 import pytest
 import json
@@ -67,14 +69,16 @@ def decode_russian_text(text):
 # Позитивный тест
 
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
-def service_022_body1(accountDebit, accountCredit):
+def service_022_body1(accountDebit, accountCredit,currency):
     current_body = data.service_022_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
+    current_body["body"][0]["currency"] = currency
     return current_body
 
-def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit):
-    service_022_body = service_022_body1(accountDebit, accountCredit)
+def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency):
+    service_022_body = service_022_body1(accountDebit, accountCredit,currency)
     payment_response = esb_request.service_post(service_022_body)
     # Добавляем запрос как шаг в отчет Allure
     with allure.step("Проверка отправленного запроса"):
@@ -118,7 +122,7 @@ class TestAmountSuite:
     # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод с депозита одного клиента на счет другого клиента в разных подразделениях (KGS->KGS)")
-    @pytest.mark.parametrize("accountDebit, accountCredit", [
+    @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (
                 {
                     "department": "125009",
@@ -137,12 +141,13 @@ class TestAmountSuite:
                     "inn": "12006200000711",
                     "cardFl": 0,
                     "processing": "COLVIR"
-                }
+                },
+                "KGS"
         )
     ])
 
-    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit):
-        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit)
+    def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit,currency):
+        positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit,currency)
 
 
 

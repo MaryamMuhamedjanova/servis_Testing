@@ -1,0 +1,33 @@
+{
+    "version": "2.7.6",
+    "description": "Scalable datastore for metrics, events, and real-time analytics.",
+    "homepage": "https://www.influxdata.com/",
+    "license": "MIT",
+    "notes": [
+        "InfluxDB v1 has been moved to 'Versions' bucket, use 'scoop install versions/influxdb1' to install it.",
+        "For CLI, please install 'influx'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-2.7.6-windows.zip",
+            "hash": "a874451d9e41dbcd63486c382b9d8bd4c3e06d7ebfdd78b0c7cdfa16bf7e5df3"
+        }
+    },
+    "bin": "influxd.exe",
+    "checkver": {
+        "url": "https://portal.influxdata.com/versions.json",
+        "jsonpath": "$.influxdb2.version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-$version-windows.zip",
+                "hash": {
+                    "url": "https://portal.influxdata.com/versions.json",
+                    "jsonpath": "$.influxdb2.downloads[?(@.platform =~ /^Windows/)].sha256"
+                }
+            }
+        }
+    }
+}

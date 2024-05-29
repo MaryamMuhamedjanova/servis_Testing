@@ -50,7 +50,7 @@ service_101_body = {
 service_102_body = {
     "version": "1.0",
     "type": "102",
-    "id": "F2B065C5-2605-4758-A148-34766EF992D9",
+    "id": str(uuid.uuid4()),
     "dateTime": "30.11.2020 16:25:44.995000 +06:00",
     "source": "DBO",
     "body": [
@@ -143,11 +143,11 @@ service_001_body = {
                 "cardFl": 0,
                 "processing": "COLVIR"
             },
-            "amount": 1,
+            "amount": 10,
             "currency": "KGS",
             "description": "Перевод через Yourbi: FX at rate 88.32",
             "rateType": "RAT_JUR",
-            "dealingRate": 88.32,
+            "dealingRate": 90,
             "debitAmount": 10,
             "creditAmount": 0.11,
             "knp": {
@@ -357,19 +357,20 @@ service_007_body = {
 
 service_008_body = {
     "version": "1.0",
-    "type": "007",
+    "type": "008",
     "id": str(uuid.uuid4()),
-    "dateTime": "29.07.2020 09:26:31.759000 +06:00",
-    "source": "DBO",
+    "dateTime": "08.05.2024 13:54:57.664",
+    "source": "Creatio",
+    "instance": "COLVIR118",
     "body": [
         {
-            "accountDebit": {
-                "department": "125008",
-                "number": "1250820001326464",
+             "accountDebit": {
+                "department": "125001",
+                "number": "1250110000041083",
                 "currency": "KGS"
             },
             "accountCredit": {
-                "department": "125008"
+                "department": "125001"
             },
             "incomFl": 0,
             "amount": 10,
@@ -616,7 +617,7 @@ service_022_body = {
                 "cardFl": 1,
                 "processing": "IPC"
             },
-            "amount": 100.00,
+            "amount": 1.00,
             "currency": "KGS",
             "description": "перевод с депозита на acc",
             "knp": {
@@ -705,3 +706,410 @@ service_024_body = {
         }
     ]
 }
+
+service_clientCreate_body = {
+    "version": "1.0",
+    "type": "client.create",
+    "noSanctionFl": 1,
+    "noAmlFl": 1,
+    "source": "Creatio",
+    "id": str(uuid.uuid4()),
+    "dateTime": "23.11.2021 09:22:06.409",
+    "colvirUser": "CRM2",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "department": "125003",
+            "serviceGroup": "125003.000",
+            "surname": "Бебеза",
+            "name": "Лора",
+            "fatherName": "Юсузовна",
+            "shortName": "Бебеза Л.",
+            "latinSurname": "Bebeza",
+            "latinName": "Lora",
+            "latinFatherName": "Iusuzovna",
+            "notes": "UZENBAEVA",
+            "pastName": "Bebeza Lora",
+            "inn": "10601198800049",
+            "birthDate": "11.08.1993",
+            "pboyulFl": 0,
+            "jurFl": 0,
+            "residFl": 1,
+            "citizenship": "KG",
+            "economySector": "9",
+            "economyBranch": "115",
+            "sex": "M",
+            "title": 1,
+            "trfPlnCategory": "2003",
+            "additionalInfo": [
+                {
+                    "code": "ADD_ACCTYPE",
+                    "value": "04"
+                },
+                {
+                    "code": "ADD_ACCTYPENM",
+                    "value": "Физические лица"
+                },
+                {
+                    "code": "FATCA",
+                    "value": "Не FATCA"
+                },
+                {
+                    "code": "FATCA_DATE",
+                    "value": "10.11.2021"
+                },
+                {
+                    "code": "SCHP",
+                    "value": "6"
+                },
+                {
+                    "code": "INCOME",
+                    "value": "0"
+                },
+                {
+                    "code": "CATEGORY",
+                    "value": "Прочий"
+                },
+                {
+                    "code": "ZKG_CLI_SOURCE",
+                    "value": "CRM"
+                },
+                {
+                    "code": "FAMSTAT",
+                    "value": "1"
+                },
+                {
+                    "code": "Z069_WORKORG",
+                    "value": "ОсОО Форестер"
+                },
+                {
+                    "code": "ACTIVITY",
+                    "value": "Водитель"
+                },
+                {
+                    "code": "NATION",
+                    "value": "Кыргыз"
+                },
+                {
+                    "code": "KM_REGFL",
+                    "value": "0"
+                },
+                {
+                    "code": "ZKG_CLI_EMP",
+                    "value": "SHABAZA"
+                }
+            ],
+            "identityDocuments": [
+                {
+                    "type": "07",
+                    "number": "22550008",
+                    "expire": "11.12.2024",
+                    "issue": "11.12.2014",
+                    "issuer": "МКК-5022",
+                    "series": "ID",
+                    "defaultFl": 1
+                },
+                {
+                    "type": "03",
+                    "number": "2255009",
+                    "expire": "11.12.2024",
+                    "issue": "11.12.2014",
+                    "issuer": "MINOBR-5022",
+                    "series": "AK"
+                }
+            ],
+            "contacts": [
+                {
+                    "contactId": 4,
+                    "kind": "MOBILE",
+                    "value": "0550618090",
+                    "note": ""
+                },
+                {
+                    "type": "PHN",
+                    "kind": "WORK",
+                    "value": "0312618090",
+                    "note": ""
+                }
+            ],
+            "addresses": [
+                {
+                    "type": "GCLIADR_REG",
+                    "ownershipsType": "OTHER",
+                    "value": "КЫРГЫЗСТАН, ЧУЙСКАЯ ОБЛ., МОСКОВСКИЙ Р-Н, АЛЕКСАНДРОВСКИЙ А/А, С. АЛЕКСАНДРОВКА, УЛИЦА КОМСОМОЛЬСКАЯ, ДОМ 140",
+                    "note": ""
+                },
+                {
+                    "type": "GCLIADR_LIVE",
+                    "ownershipsType": "OWNER",
+                    "value": "КЫРГЫЗСТАН, КЫРГЫЗСТАН, ЧУЙСКАЯ ОБЛ.,  МОСКОВСКИЙ Р-Н, АЛЕКСАНДРОВКА А., КОМСОМОЛЬСКАЯ КӨЧ., 140",
+                    "note": ""
+                }
+            ],
+            "roles": [
+                "CLI"
+            ],
+            "offerContracts": [
+                {
+                    "type": "HARD_COPY",
+                    "typeName": "Физическое заявление-анкета",
+                    "acceptFl": "1",
+                    "signDate": "20.12.2021",
+                    "offerDepartment": "125003",
+                    "signSubTypeId": 1,
+                    "source": "CRM",
+                    "dscr": ""
+                }
+            ],
+            "bnkAffiliate": [
+                {
+                    "type": "04",
+                    "fromDate": "21.12.2021",
+                    "toDate": ""
+                }
+            ],
+            "relatives": [
+                {
+                    "relativeType": "54",
+                    "fromDate": "20.10.1999",
+                    "toDate": "",
+                    "relativeSurname": "",
+                    "relativeName": "",
+                    "relativeFatherName": "",
+                    "relativeAbsCode": "008.125682",
+                    "note": ""
+                }
+            ],
+            "AMLForm": {
+                "registrationDate": "31.12.21",
+                "note": "ПК",
+                "attributes": [
+                    {
+                        "attributeId": 1157,
+                        "value": "31.12.21"
+                    },
+                    {
+                        "attributeId": 1158,
+                        "value": "0"
+                    }
+                ]
+            },
+            "identification": {
+                "department": "125003",
+                "level": "3",
+                "time": "28.03.2022 08:46:15",
+                "note": "Клиент идентифицирован в системе CRM",
+                "source": "CRM"
+            },
+            "operations": [
+                {
+                    "code": "OPN"
+                }
+            ]
+        }
+    ]
+}
+
+service_depositCreate_body = {
+  "type": "deposit.create",
+  "version": "1.0",
+  "noSanctionFl": 1,
+  "source": "BPM.Deposit",
+  "id":  str(uuid.uuid4()),
+  "dateTime": "11.09.2023 13:15:13",
+  "instance": "COLVIR118",
+  "body": [
+    {
+      "department": "125008",
+      "dclCode": "NV",
+      "subDclCode": "NVCRM",
+      "creTermType": "M",
+      "creTerm": 36,
+      "prcRate": 12.0,
+      "currency": "KGS",
+      "amount": 700.0,
+      "date": "11.09.2023",
+      "absCode": "008.119115",
+      "depositContractParameters": [
+        {
+          "value": "0",
+          "code": "D_PROLARCFL"
+        },
+        {
+          "value": "W",
+          "code": "L_CAP_SERVICING"
+        },
+        {
+          "value": "1",
+          "code": "L_CAP_NEEDUPDATE"
+        },
+        {
+          "value": "BPM",
+          "code": "DEPO_SRC_CHANNEL"
+        }
+      ],
+      "depositPaymentAttributes": [
+        {
+          "accAbsCode": "1250820004787445",
+          "accType": "CLIACC",
+          "department": "125008",
+          "note": ""
+        }
+      ],
+      "depositPaymentSettings": [
+        {
+          "amountType": "Прием вклада переводом",
+          "paymentType": "Безналично",
+          "accAbsCode": "1250820004787445"
+        },
+        {
+          "amountType": "Сумма депозита",
+          "paymentType": "Безналично",
+          "accAbsCode": "1250820004787445"
+        },
+        {
+          "amountType": "Возврат депозита",
+          "paymentType": "Безналично",
+          "accAbsCode": "1250820004787445"
+        },
+        {
+          "amountType": "Выплата вознаграждения по депозиту",
+          "paymentType": "Безналично",
+          "accAbsCode": "1250820004787445"
+        }
+      ],
+      "operations": [
+        {
+          "code": "OPENACC"
+        },
+        {
+          "code": "SHD_CALC"
+        },
+        {
+          "code": "CALCAPR"
+        },
+        {
+          "code": "REG_SHD"
+        },
+        {
+          "code": "GET_DEPOSIT"
+        }
+      ]
+    }
+  ]
+}
+
+service_creditCreate_body = {
+  "version": "1.0",
+  "type": "credit.create",
+  "id": str(uuid.uuid4()),
+  "dateTime": "15.03.2024 15:51:47.372122 +06:00",
+  "source": "Creatio118",
+  "colvirUser": "CRM2",
+  "body": [
+    {
+      "department": "125002",
+      "absCode": "008.119115",
+      "dclCode": "013НС_А",
+      "creditCode": "02N-КД-24-54816/1-РБ",
+      "creditStartDate": "15.03.2024",
+      "creditRegDate": "15.03.2024",
+      "creTermType": "M",
+      "creTerm": 12,
+      "currency": "KGS",
+      "amount": 30000.00,
+      "creIssueFee": 0.00,
+      "prcRate": 24.00,
+      "principalOverdueFee": 0.07,
+      "crePurposeId": 187,
+      "additionalInfo": [
+        {
+          "code": "8288",
+          "value": "1"
+        },
+        {
+          "code": "7989",
+          "value": "1"
+        },
+        {
+          "code": "8233",
+          "value": "1"
+        },
+        {
+          "code": "8728",
+          "value": "15.03.2024"
+        },
+        {
+          "code": "1501",
+          "value": "15"
+        },
+        {
+          "code": "8168",
+          "value": "1250820003648808"
+        },
+        {
+          "code": "8148",
+          "value": "4"
+        },
+        {
+          "code": "8128",
+          "value": "15.03.2024"
+        },
+        {
+          "code": "8648",
+          "value": "001620"
+        },
+        {
+          "code": "8608",
+          "value": "MIB"
+        },
+        {
+          "code": "8548",
+          "value": "Народная-онлайн (кредит в KGS)"
+        }
+      ],
+      "analytics": [
+        {
+          "code": 371784,
+          "value": "509"
+        },
+        {
+          "code": 373504,
+          "value": "509.6"
+        },
+        {
+          "code": 373544,
+          "value": "6"
+        }
+      ],
+      "creditPaymentAttributes": [
+        {
+          "accAbsCode": "1250820004787445",
+          "department": "125008",
+          "accType": "CLIACC"
+        }
+      ],
+      "operations": [
+        {
+          "code": "CALCSHD",
+          "parameters": []
+        },
+        {
+          "code": "CREDITRATE",
+          "parameters": [
+            {
+              "code": "REASON",
+              "value": "выдача займа"
+            },
+            {
+              "code": "RES_VALUE",
+              "value": "1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+

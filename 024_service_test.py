@@ -1,3 +1,5 @@
+import uuid
+
 import allure
 import pytest
 import json
@@ -69,6 +71,7 @@ def decode_russian_text(text):
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
 def service_024_body1(accountDebit, accountCredit):
     current_body = data.service_024_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body

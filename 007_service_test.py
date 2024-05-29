@@ -1,3 +1,5 @@
+import uuid
+
 import allure
 import pytest
 import json
@@ -49,7 +51,6 @@ response_schema = {
 }
 
 
-
 # Функция для проверки ответа с использованием JSON Schema
 def check_response_with_schema(response_json):
     jsonschema.validate(instance=response_json, schema=response_schema)
@@ -73,6 +74,7 @@ def decode_russian_text(text):
 # Функция для формирования тела запроса с учетом accountDebit и accountCredit
 def service_007_body1(accountDebit, accountCredit):
     current_body = data.service_007_body.copy()
+    current_body["id"] = str(uuid.uuid4())
     current_body["body"][0]["accountDebit"] = accountDebit
     current_body["body"][0]["accountCredit"] = accountCredit
     return current_body
@@ -105,7 +107,7 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
         # Проверка ответа с использованием JSON Schema
         check_response_with_schema(payment_response.json())
         # Проверка наличия полей в ответе для accountDebit
-       # check_accountDebit_fields(accountDebit)
+        #check_accountDebit_fields(accountDebit)
         # Проверка наличия полей в ответе для accountCredit
         #check_accountCredit_fields(accountCredit)
     # Проверка статуса ответа

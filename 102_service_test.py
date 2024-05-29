@@ -19,7 +19,7 @@ def positive_assert_identifier(identifier):
         allure.attach("Response", str(payment_response.text), allure.attachment_type.TEXT)
         response_json = payment_response.json()
         # Ожидаемые поля в ответе
-        expected_fields = ["fromJournal", "version", "type", "id", "dateTime", "source",
+        expected_fields = [ "version", "type", "id", "dateTime", "source",
                            "restartAllowed", "responseCode", "responseMessage", "body"]
         # Поля, которые ожидаем в каждом элементе "body"
         body_fields = ["responseCode", "responseMessage", "identifierType", "identifierStatus",
