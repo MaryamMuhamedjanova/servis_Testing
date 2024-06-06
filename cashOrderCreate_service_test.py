@@ -173,8 +173,8 @@ class TestClientCreateSuite:
             "currency": "KGS",
             "bnkOper": "B1010",
             "docNum": "09-035832",
-            "docDate": "31.05.2024",
-            "operDate": "31.05.2024",
+            "docDate": "06.06.2024",
+            "operDate": "06.06.2024",
             "knp": {
                 "gkpo": "55303005",
                 "pb": "",
