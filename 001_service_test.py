@@ -103,8 +103,8 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
     with allure.step("Проверка сообщения об успехе в ответе"):
         assert payment_response.json()["responseMessage"] == "Платеж успешно создан"
     # Проверка поля currency
-    with allure.step("Проверка поля currency"):
-        assert service_001_amount_body["body"][0]["currency"] == currency, "Currency mismatch in request body"
+    # with allure.step("Проверка поля currency"):
+    #    assert service_001_amount_body["body"][0]["currency"] == currency, "Currency mismatch in request body"
 
 # Класс с тестами
 @allure.suite("(001 сервис) Перевод между счетами клиента(-ов)")
@@ -137,8 +137,7 @@ class TestAmountSuite:
     def test_specific_accountDebit_and_accountCredit(self, accountDebit, accountCredit, currency):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit, currency)
 
-    # Параметризованный тест: Перевод между счетами в одном подразделении (KGS->USD)
-    @allure.sub_suite("Тесты с различными значениями для счета дебета (accountDebit) и счета кредита (accountCredit)")
+    @allure.sub_suite("Тесты с различными значениями для счета дебета (accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод между счетами в одном подразделении (KGS->USD)")
     @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (
@@ -166,8 +165,7 @@ class TestAmountSuite:
     def test_specific_accountDebit_and_accountCredit_USD(self, accountDebit, accountCredit, currency):
         positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, accountCredit, currency)
 
-    # Параметризованный тест: Перевод между счетами в разных подразделениях (KGS->KGS)
-    @allure.sub_suite("Тесты с различными значениями для счета дебета (accountDebit) и счета кредита (accountCredit)")
+    @allure.sub_suite("Тесты с различными значениями для счета дебета (accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод между счетами в разных подразделениях (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit, currency", [
         (

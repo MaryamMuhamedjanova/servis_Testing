@@ -24,7 +24,7 @@ cardPayment_body = {
 service_100_body = {
     "version": "1.0",
     "type": "100",
-    "id": "2208A15C-CF68-4948-8E0C-94BD82CDD0F8",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -37,7 +37,7 @@ service_100_body = {
 service_101_body = {
     "version": "1.0",
     "type": "101",
-    "id": "2208A15C-CF68-4948-8E0C-94BD82CDD0F8",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -67,7 +67,7 @@ service_102_body = {
 service_205_body = {
     "version": "1.0",
     "type": "205",
-    "id": "2208A15C-CF68-4948-8E0C-94BD82CDD0F8",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -80,7 +80,7 @@ service_205_body = {
 service_207_inn_body ={
     "version": "2.0",
     "type": "207",
-    "id": "{{$guid}}",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -93,7 +93,7 @@ service_207_inn_body ={
 service_207_customerId_body = {
     "version": "2.0",
     "type": "207",
-    "id": "{{$guid}}",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -106,7 +106,7 @@ service_207_customerId_body = {
 service_207_proofNum_body = {
     "version": "2.0",
     "type": "207",
-    "id": "{{$guid}}",
+    "id": str(uuid.uuid4()),
     "dateTime": "05.10.2023 11:25:52.770434 +06:00",
     "source": "Creatio",
     "body": [
@@ -656,7 +656,7 @@ service_023_body = {
                 "cardFl": 1,
                 "processing": "IPC"
             },
-            "amount": 100.00,
+            "amount": 1.00,
             "currency": "KGS",
             "description": "перевод с депозита на карту ",
             "knp": {
@@ -695,7 +695,7 @@ service_024_body = {
                 "cardFl": 1,
                 "processing": "IPC"
             },
-            "amount": 100.00,
+            "amount": 10.00,
             "currency": "KGS",
             "description": "перевод с депозита на карту ",
             "knp": {
@@ -1112,4 +1112,198 @@ service_creditCreate_body = {
   ]
 }
 
+service_accountCreate_body = {
+    "version": "1.0",
+    "type": "account.create",
+    "id": str(uuid.uuid4()),
+    "dateTime": "15.09.2023 02:56:44",
+    "source": "BAAS.AccountCreate",
+     "instance": "COLVIR118",
+    "body": [
+        {
+            "department": "125008",
+            "ledgerAccount": "20201",
+            "serviceGroup": "125008.000",
+            "client": "008.119115",
+            "name": "Мухамеджданова Марьям Ахмаджановна",
+            "currency": "KGS",
+            "analytics": [
+                {
+                    "code": "DEPARTMENT",
+                    "value": "125008"
+                },
+                {
+                    "code": "ZGL_KZT",
+                    "value": "2209001kz"
+                }
+            ],
+            "addAttributes": "",
+            "operations": ""
+        }
+    ]
+}
 
+service_directoriesExchangeRatesRead_body = {
+    "type": "directories.exchangeRates.read",
+    "version": "1.0",
+    "id": str(uuid.uuid4()),
+    "dateTime": "14.10.2021 09:20:37.955",
+    "source": "TEST",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "filter": {
+                "buyCurrency": "KGS",
+                "sellCurrency": "USD",
+                "department": "125008"
+            }
+        }
+    ]
+}
+
+service_cashOrderCreate_body = {
+    "version": "1.0",
+    "type": "cashOrder.create",
+    "noSanctionFl": 1,
+    "cancelCheckFl": 1,
+    "id": str(uuid.uuid4()),
+    "dateTime": "31.05.2024 13:28:39.887235 +06:00",
+    "source": "Creatio",
+    "colvirUser": "GMURSALIEVA",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "incomFl": 1,
+            "accountDebit": {
+                "department": "125008"
+            },
+            "accountCredit": {
+                "department": "125008",
+                "number": "1250820004787445",
+                "currency": "KGS"
+            },
+            "amount": 19.00,
+            "currency": "KGS",
+            "bnkOper": "B1010",
+            "docNum": "09-035832",
+            "docDate": "31.05.2024",
+            "operDate": "31.05.2024",
+            "knp": {
+                "gkpo": "55303005",
+                "pb": "",
+                "vpb": ""
+            },
+            "description": "Пополнение счета",
+            "payer": "Рысбеков Серик Токторбайевич",
+            "identityDocument": "Паспорт гражданина КР (ID-карта) ID 1551801 МКК 211031 17.01.2020",
+            "additionalInfo": [
+                {
+                    "code": "Z069_ADDRESS",
+                    "value": "КЫРГЫЗСТАН, ИССЫК- КУЛСЬКАЯ обл, ИССЫК КУЛЬКИЙ р-н, БАЛЫКЧИ г, ЛЕОНОВА ул, дом 15"
+                },
+                {
+                    "code": "Z069_BIRTHDATE",
+                    "value": "25.05.1984"
+                },
+                {
+                    "code": "Z069_BIRTHPLACE",
+                    "value": ""
+                },
+                {
+                    "code": "Z069_CITIZENSHIP",
+                    "value": "Кыргызстан"
+                },
+                {
+                    "code": "Z069_CONTACTS",
+                    "value": "0772 677789"
+                },
+                {
+                    "code": "Z069_INN",
+                    "value": "22505198400193"
+                },
+                {
+                    "code": "Z069_MARITAL",
+                    "value": "Женат/Замужем"
+                },
+                {
+                    "code": "Z069_NATIONALITY",
+                    "value": "казах"
+                },
+                {
+                    "code": "Z069_RESIDFL",
+                    "value": "1"
+                },
+                {
+                    "code": "Z069_VISA_REG",
+                    "value": ""
+                }
+            ],
+            "signatures": {
+                "head": ""
+            },
+            "cashPlanSymbols": [
+                {
+                    "symbol": "13",
+                    "amount": 19.00
+                }
+            ],
+            "operations": [
+                {
+                    "code": "REG",
+                    "parameters": []
+                },
+                {
+                    "code": "POST2",
+                    "parameters": []
+                }
+            ]
+        }
+    ]
+}
+
+service_holdCreate_body = {
+    "type" : "hold.create",
+    "version" : "1.0",
+    "id": str(uuid.uuid4()),
+    "dateTime" : "12.10.2021 13:06:54.981000 +06:00",
+    "source" : "TEST",
+    "instance": "COLVIR118",
+    "body" : [{
+        "account" : {
+            "number" : "1250820004787445",
+            "department" : "125008"
+        },
+        "limType" : "L",
+        "amount" : 1,
+        "currency" : "KGS",
+        "description" : "Тестовый холд"
+    }]
+}
+
+service_holdDelete_body = {
+    "type" : "hold.delete",
+    "version" : "1.0",
+    "id": str(uuid.uuid4()),
+    "dateTime" : "12.10.2021 13:06:54.981000 +06:00",
+    "source" : "TEST",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "holdId": 301054
+        }
+    ]
+}
+
+service_directoriesUniversal_body = {
+    "type": "directories.universal",
+    "version": "1.0",
+    "id": str(uuid.uuid4()),
+    "dateTime": "21.10.2021 13:06:54.981000 +06:00",
+    "source": "TEST",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "directoryCode": "G_CLIAUTHPRS_PLACE"
+        }
+    ]
+}
