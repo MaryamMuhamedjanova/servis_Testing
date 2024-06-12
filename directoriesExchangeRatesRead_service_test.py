@@ -6,8 +6,6 @@ import jsonschema
 import data
 import esb_request
 
-# JSON Schema для описания ожидаемой структуры ответа от сервиса
-# Updated response schema
 response_schema = {
     "type": "object",
     "properties": {
@@ -56,19 +54,12 @@ response_schema = {
 }
 
 
-# Функция для проверки ответа с использованием JSON Schema
 def check_response_with_schema(response_json):
     jsonschema.validate(instance=response_json, schema=response_schema)
-
-# Остальной код остается таким же, но использует новую функцию check_response_with_schema
-# Функция для формирования тела запроса
-# Функция для проверки полей в объекте accountDebit
 
 def decode_russian_text(text):
     return text.encode('utf-8').decode('unicode_escape')
 
-
-# Параметризованные данные для теста
 @pytest.mark.parametrize("client_data", [
     {
         "filter": {
@@ -77,10 +68,8 @@ def decode_russian_text(text):
             "department": "125008"
         }
     },
-    # Другие наборы данных можно добавить здесь
 ])
 
-# Функция для формирования тела запроса
 def get_service_directoriesExchangeRatesRead_body(client_data):
     current_body = data.service_directoriesExchangeRatesRead_body.copy()
     current_body["id"] = str(uuid.uuid4())

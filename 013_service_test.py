@@ -115,11 +115,8 @@ def positive_assert_amount_with_accountDebit_and_accountCredit(accountDebit, acc
     with allure.step("Проверка сообщения об успехе в ответе"):
         assert payment_response.json()["responseMessage"] == "Платеж успешно создан"
 
-
-# Класс с тестами
 @allure.suite("(013 сервис) Перевод с карты на счет клиента")
 class TestAmountSuite:
-    # Параметризованный тест
     @allure.sub_suite("Тесты с различными значениями для счета дебета(accountDebit) и счета кредита(accountCredit)")
     @allure.title("Перевод с карты на счет в одном подразделении (KGS->KGS)")
     @pytest.mark.parametrize("accountDebit, accountCredit, currency", [

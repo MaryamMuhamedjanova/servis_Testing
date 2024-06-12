@@ -170,7 +170,7 @@ class TestClientCreateSuite:
         positive_assert_directoriesUniversal_body(client_data)
 
     @allure.sub_suite("Положительные тесты с различными значениями кода справочника")
-    @allure.title("Для справочника <Подтип подписи клиента> (может включать в себя несколько подтипов подписи)")
+    @allure.title("Для справочника <Подтип подписи клиента> (может включать несколько подтипов)")
     @pytest.mark.parametrize("client_data", [
         {
             "directoryCode": "DMN$35"
@@ -190,7 +190,7 @@ class TestClientCreateSuite:
         positive_assert_directoriesUniversal_body(client_data)
 
     @allure.sub_suite("Положительные тесты с различными значениями кода справочника")
-    @allure.title("Для справочника Направление/отрасль НБКР>")
+    @allure.title("Для справочника <Направление/отрасль НБКР>")
     @pytest.mark.parametrize("client_data", [
         {
             "directoryCode": "Z069_INDUSTRY_HBKR"

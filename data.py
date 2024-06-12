@@ -1307,3 +1307,255 @@ service_directoriesUniversal_body = {
         }
     ]
 }
+
+service_directoriesCashInventoryItemsRead_body = {
+    "type": "directories.cashInventoryItems.read",
+    "version": "1.0",
+    "source": "TEST",
+    "id": str(uuid.uuid4()),
+    "dateTime": "21.10.2021 13:06:54.981000 +06:00",
+    "instance": "COLVIR118",
+    "body": [
+        {
+        "colvirUser": "",
+        "department": "",
+        "cashFl": ""
+         }
+    ]
+}
+
+service_commissionCalculator_body = {
+    "version": "1.0",
+    "type": "commission.calculator",
+    "id": str(uuid.uuid4()),
+    "dateTime": "29.07.2020 09:26:31.759000 +06:00",
+    "source": "DBO",
+    "colvirUser": "GMURSALIEVA",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "operation": "BC1021",
+            "amount": 1000000.00,
+            "currency": "KGS",
+            "client": "008.069991",
+            "clientAccount": {
+                "department": "125008",
+                "number": "1250820000899159"
+            },
+            "accountDebit": {
+                "department": "125008",
+                "number": "1250820000899159"
+            },
+            "accountCredit": {
+                "department": "125008"
+            }
+        }
+    ]
+}
+
+service_accountRead_body = {
+  "type" : "account.read",
+  "version" : "1.0",
+  "source" : "Creatio",
+  "id": str(uuid.uuid4()),
+  "dateTime": "14.12.2021 20:31:23.123",
+  "instance": "COLVIR118",
+  "body" : [
+    {
+      "bps" : ["1001"],
+      "currency" : ["KGS"],
+      "closeFl" : 0,
+      "client" : {
+        "absCode" : ["008.111493"]
+      },
+      "readingParameters" : {
+        "balance" : True,
+        "locks" : True
+      }
+    }
+  ]
+}
+
+
+service_clientRead_body = {
+    "dateTime": "01.03.2022 15:52:48.883",
+    "id": str(uuid.uuid4()),
+    "source": "Creatio",
+    "type": "client.read",
+    "version": "1.0",
+    "colvirUser": "ESB",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "absCode": [
+                "008.119115"
+            ],
+            "roles": [
+                "CLI",
+                "AUT"
+            ],
+            "editingTime": {
+                "from": "03.03.2022 15:21:15",
+                "to": "02.04.2024 15:21:18"
+            },
+            "notEditedByAbsCodes": [
+                "CRM2"
+            ],
+            "readingParameters": {
+                "archiveFl": 0,
+                "jurFl": 0,
+                "pboYulFl": 0
+            }
+        }
+    ]
+}
+
+service_clientRead_v2_body = {
+    "version": "2.0",
+    "type": "client.read",
+    "id": str(uuid.uuid4()),
+    "dateTime": "13.03.2023 16:07:04.817193 +06:00",
+    "source": "yourbi",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "taxCode": "12006200000711",
+            "pboYulFl": 0,
+            "readingParameters": {
+                "registrationDocuments": True,
+                "identityDocuments": True,
+                "addresses": True
+            }
+        }
+    ]
+}
+
+service_authorizedPersonRead_body = {
+    "dateTime": "01.03.2022 15:52:48.883",
+    "id": str(uuid.uuid4()),
+    "source": "Creatio",
+    "type": "authorizedPerson.read",
+    "version": "1.0",
+    "colvirUser": "ESB",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "principalAbsCode": [
+                "002.034314"
+            ],
+            "absCode": [
+                "002.034323"
+            ],
+            "editingTime": {
+                "from": "",
+                "to": ""
+            }
+        }
+    ]
+}
+
+service_clientUpdate_body = {
+    "version": "1.0",
+    "type": "client.update",
+    "source": "Creatio",
+    "id": str(uuid.uuid4()),
+    "dateTime": "23.11.2021 09:22:06.409",
+    "colvirUser": "ESB",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "absCode": "008.125669",
+            "surname": "Вахирзаде"
+        }
+    ]
+}
+
+service_mortgageCreate_body = {
+    "version": "1.0",
+    "type": "mortgage.create",
+    "source": "Creatio",
+    "id": str(uuid.uuid4()),
+    "dateTime": "23.11.2021 09:22:06.409",
+    "colvirUser": "CRM2",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "department": "125008",
+            "code": "8000",
+            "description": "Автомат, электропакет, новая резина",
+            "ensurId": 1,
+            "location": "г. Бишкек",
+            "cost": 300000,
+            "costCurrency": "KGS",
+            "marketCost": 300000,
+            "marketCostCurrency": "KGS",
+            "docCount": 11,
+            "registrationCountry": "KG",
+            "contractRegDate": "21.08.2021",
+            "contractRegNum": "456122",
+            "contractRegOrg": "ГАИ",
+            "counterpartyAbsCode": "008.069991",
+            "assessDocInfo": "№8989",
+            "assessDocDate": "05.04.2022",
+            "appraisAbsCode": "",
+            "vehicleRegSign": "A1277BB",
+            "vehicleVIN": "996557069797",
+            "vehicleMark": "BMW E34",
+            "vehicleType": "Седан",
+            "vehicleCategory": "B",
+            "vehicleEngineNum": "M50B25TU",
+            "vehicleChassisNum": "RAM456789",
+            "vehicleBodyNum": "BOD456789",
+            "vehiclePasspSeries": "AR",
+            "vehiclePasspNum": "897327",
+            "vehiclePasspDate": "02.12.05",
+            "vehiclePasspIssuer": "Горгаи",
+            "vehicleReleaseYear": "1993",
+            "vehicleColor": "cosmosschwarz metallic",
+            "vehicleEngineOutput": 192,
+            "vehicleEngDisplacement": 2494,
+            "vehiclePTSSeries": "AN",
+            "vehiclePTSNum": "327897",
+            "vehiclePTSDate": "02.12.20",
+            "vehiclePTSIssuer": "Республиканская ГАИ ",
+            "vehicleProdType": "2",
+            "mortgageHolder": [
+                {
+                    "mortOwnerAbsCode": "008.103879",
+                    "mortOwnershipCode": "1",
+                    "mortgageDocuments": [
+                        {
+                            "mortOwnershipDocType": "1",
+                            "mortOwnershipDocNum": "№19999",
+                            "mortOwnershipDocDate": "03.01.2022"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+service_depositRead_body = {
+    "dateTime": "01.03.2022 15:52:48.883",
+    "id": str(uuid.uuid4()),
+    "source": "Creatio",
+    "type": "deposit.read",
+    "version": "1.0",
+    "instance": "COLVIR118",
+    "body": [
+        {
+            "dea_absCode": [
+                "22-8-Д/NN-004608"
+            ],
+            "readingParameters": {
+                "depositPaymentSettings": True,
+                "depositPaymentSums": True,
+                "depositAnalytics": True,
+                "depositParameters": True,
+                "depositTrustees": True,
+                "depositInheritors": True
+            }
+        }
+    ]
+}

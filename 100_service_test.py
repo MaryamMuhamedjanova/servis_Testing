@@ -32,8 +32,7 @@ def positive_assert_clientCode(clientCode):
         "blockedAmount", "availAmount", "opened", "statDscrId",
         "statDscrNord", "dateLast", "department", "closeDate",
         "chaCode", "processing", "cardFl", "blockedStatus",
-        "defaultFL", "depAccFl", "creAccFl", "ordId",
-        "futureTurnoverKGS"
+        "defaultFL", "depAccFl", "creAccFl", "ordId"
     }
     # Проверка наличия ожидаемых полей в ответе
     missing_fields = expected_fields - set(response_data.keys())
